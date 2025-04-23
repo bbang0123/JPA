@@ -4,6 +4,8 @@ import org.lgcns.jpa.model.Customer;
 import org.lgcns.jpa.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService {
     // CustomerService 클래스는 고객 관련 비즈니스 로직을 처리하는 서비스 클래스입니다.
@@ -32,5 +34,17 @@ public class CustomerService {
 
     public Customer findByName(String name) {
         return customerRepository.findByName(name);
+    }
+
+    public Customer findFirst2ByNameLikeOrderByIdDesc(String name) {
+        return customerRepository.findFirst2ByNameLikeOrderByIdDesc(name).get(0);
+    }
+
+    public Customer findByNameAndEmail(String name, String email) {
+        return customerRepository.findByNameAndEmail(name, email);
+    }
+
+    public Optional<Customer> findCustomerById(Long id) {
+        return customerRepository.findById(id);
     }
 }

@@ -12,4 +12,6 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
     // 추가적인 쿼리 메소드가 필요하다면 여기서 정의
     Customer findByName(String name);
     List<Customer> findFirst2ByNameLikeOrderByIdDesc(String name);
+
+    Customer findByNameAndEmail(String name, String email);
 }
