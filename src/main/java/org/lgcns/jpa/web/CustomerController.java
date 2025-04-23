@@ -16,7 +16,7 @@ public class CustomerController {
 
     @GetMapping
     public Customer getCustomer() {
-        return customerService.getCustomer(1L);
+        return customerService.getCustomer(9L);
     }
 
 //    @GetMapping("/{id}")
@@ -28,9 +28,18 @@ public class CustomerController {
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
     }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteCustomer(@PathVariable Long id) {
-//        customerService.deleteCustomer(id);
-//    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+    }
+    @PutMapping("/{id}")
+    public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+        customer.setId(id);
+        return customerService.addCustomer(customer);
+    }
+    @GetMapping("/findByName/{name}")
+    public Customer findByName(@PathVariable String name) {
+        return customerService.findByName(name);
+    }
 }

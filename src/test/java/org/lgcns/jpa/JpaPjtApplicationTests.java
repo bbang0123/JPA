@@ -21,12 +21,13 @@ public class JpaPjtApplicationTests {
     void insertTestData() {
         Customer customer = new Customer();
         customer.setName("Test User");
+        customer.setEmail("test@gmail.com");
         customerRepository.save(customer);
     }
 
     @Test
-    void findAllTest() { // 저장된 데이터 모두를 Spring JPA에 미리 구현된 findAll 명령을 통해 불러온다
+    void findAllTest() {
         List<Customer> userList = (List<Customer>) customerRepository.findAll();
-        for(Customer u : userList) System.out.println("[FindAll]: " + u.getName() );
+        for(Customer u : userList) System.out.println("[FindAll]: " + u.toString() );
     }
 }
